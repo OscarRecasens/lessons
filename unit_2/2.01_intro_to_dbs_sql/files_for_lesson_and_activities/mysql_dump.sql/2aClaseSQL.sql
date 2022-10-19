@@ -132,3 +132,37 @@ where a2 regexp '^k';
 
 select distinct a2 from bank.district
 where a2 regexp 'k$';
+
+select * from bank.district
+where A3 like 'north%';
+
+select * from bank.district
+where a3 like 'north_M%';
+-- This would return all the results for
+-- 'north  Moravia', 'northMoravia', northMiami'
+
+select * from bank.district
+where a3 regexp 'north';
+
+-- Now we will take a look at another table
+-- to see the difference between LIKE and REGEXP
+select * from bank.order
+where k_symbol regexp 's';
+
+select * from bank.order
+where k_symbol regexp '^s';
+
+select * from bank.order
+where k_symbol regexp 'o$';
+
+-- We can include multiple conditions at the same time
+select distinct k_symbol from bank.order
+where k_symbol regexp 'ip|is';
+
+select * from bank.district
+where a2 regexp 'ch[e-r]';
+
+--- buscar en a2 cualquier caracter que sea ch y luego cualquier caracter entre la letra e y la r
+
+select * from bank.district
+where a2 regexp 'cesk[ey]';
